@@ -13,10 +13,10 @@ export class BookComponent implements OnInit {
   public currentBookId: string;
   public currentBook: object = {};
 
-  public selectedFormat: object;
+  /*public selectedFormat: object;
   public selectedCountry: object;
   public selectedCity: object;
-  public selectedCompany: object;
+  public selectedCompany: object;*/
 
   public dataLists: object = {};
 
@@ -56,7 +56,4 @@ export class BookComponent implements OnInit {
     })
   }
 
-  test(e: any): void {
-    console.log(e);
-  }
 }

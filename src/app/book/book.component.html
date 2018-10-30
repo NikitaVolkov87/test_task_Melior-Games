@@ -26,23 +26,24 @@
 
     <div class="form-group">
       <label for="format">Format</label>
-      <select class="form-control" id="format">
-        <option>Paperback</option>
+      <select class="form-control" id="format" name="format" (click)="booksService.log(currentBook.formatId)" [(ngModel)]="currentBook.formatId">
+        <option *ngFor="let format of dataLists.formats" [ngValue]="format.id" [selected]="format.id === currentBook.formatId">{{format.name}}</option>>
+        <!-- <option>Paperback</option>
         <option>Hardcover</option>
         <option>Audiobook</option>
         <option>Leather Bound</option>
-        <option>Spiral Bound</option>
+        <option>Spiral Bound</option> -->
       </select>
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea class="form-control" id="description" rows="3"></textarea>
+      <textarea class="form-control" id="description" rows="3" name="description" [(ngModel)]="currentBook.description"></textarea>
     </div>
 
     <div class="form-group">
       <label for="price">Price</label>
-      <input class="form-control" id="price">
+      <input class="form-control" id="price" name="price" [(ngModel)]="currentBook.price">
     </div>
 
     <hr class="m-1 mb-5 mt-5">
@@ -51,7 +52,7 @@
 
     <div class="form-group">
       <label for="country">Country</label>
-      <select class="form-control" id="country" name="country" (click)="test(currentBook.countryId)" [(ngModel)]="currentBook.countryId">
+      <select class="form-control" id="country" name="country" (click)="booksService.log(currentBook.countryId)" [(ngModel)]="currentBook.countryId">
         <option *ngFor="let country of dataLists.countries" [ngValue]="country.id" [selected]="country.id === currentBook.countryId">{{country.name}}</option>
         <!-- <option>Country #1</option>
         <option>Country #2</option>
@@ -61,19 +62,25 @@
 
     <div class="form-group">
       <label for="city">City</label>
-      <select class="form-control" id="city">
-        <option>City #1</option>
+      <select class="form-control" id="city" name="city" (click)="booksService.log(currentBook.cityId)" [(ngModel)]="currentBook.cityId">
+        <ng-container *ngFor="let city of dataLists.cities">
+          <option *ngIf="!(currentBook.countryId) || (city.countryId === currentBook.countryId)" [ngValue]="city.id" [selected]="city.id === currentBook.cityId">{{city.name}}</option>
+        </ng-container>
+        <!-- <option>City #1</option>
         <option>City #2</option>
-        <option>City #3</option>
+        <option>City #3</option> -->
       </select>
     </div>
 
     <div class="form-group">
       <label for="company">Company</label>
-      <select class="form-control" id="company">
-        <option>Company #1</option>
+      <select class="form-control" id="company" name="company" (click)="booksService.log(currentBook.companyId)" [(ngModel)]="currentBook.companyId">
+        <ng-container *ngFor="let company of dataLists.companies">
+          <option *ngIf="!(currentBook.cityId) || (company.cityId === currentBook.cityId)" [ngValue]="company.id" [selected]="company.id === currentBook.companyId">{{company.name}}</option>
+        </ng-container>
+        <!-- <option>Company #1</option>
         <option>Company #2</option>
-        <option>Company #3</option>
+        <option>Company #3</option> -->
       </select>
     </div>
 
