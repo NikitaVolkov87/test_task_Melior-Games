@@ -1,3 +1,9 @@
 <div class="container">
   <h3 class="text-center">List Of Books</h3>
+  <div class="block__books" *ngIf="books">
+    <p>Available books now:</p>
+    <div class="container__books" *ngFor="let book of books">
+      <a href="" routerLink="/book/{{book.id}}"><p><span>{{book.author}}</span> - <span>{{book.title}}</span></p></a>
+    </div>
+  </div>
 </div>

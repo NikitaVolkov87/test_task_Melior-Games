@@ -24,8 +24,8 @@ For retrieving data every request should be supplied with "x-auth-token: bad18eb
 
 ```
 'Main' - page:
-1) Output list of available books on main page.
-2) List items should contain links to separate page (similar to 'Add New Book') and pre-populate the form.
+1) (done) Output list of available books on main page.
+2) (done) List items should contain links to separate page (similar to 'Add New Book') and pre-populate the form.
 ```
 
 # Assignment 2
@@ -33,7 +33,7 @@ For retrieving data every request should be supplied with "x-auth-token: bad18eb
 'Add New Book' - page:
 1) Add form validation and display errors under invalid fields.
 2) All fields are required.
-3) Format, Country, City, Company options should be loaded from server.
+3) (done) Format, Country, City, Company options should be loaded from server.
 4) Save form data to server.
 ```
  

@@ -2,26 +2,26 @@
 
   <form>
 
-    <h3 class="mb-4">Book Info</h3>
+    <h3 class="mb-4" (click)="booksService.log(currentBook)">Book Info</h3>
 
     <div class="form-group">
       <label for="author">Author</label>
-      <input class="form-control" id="author">
+      <input class="form-control" id="author" name="author" [(ngModel)]="currentBook.author">
     </div>
 
     <div class="form-group">
       <label for="title">Title</label>
-      <input class="form-control" id="title">
+      <input class="form-control" id="title" name="title" [(ngModel)]="currentBook.title">
     </div>
 
     <div class="form-group">
       <label for="isbn">ISBN</label>
-      <input class="form-control" id="isbn">
+      <input class="form-control" id="isbn" name="isbn" [(ngModel)]="currentBook.isbn">
     </div>
 
     <div class="form-group">
       <label for="pages">Number of Pages</label>
-      <input class="form-control" id="pages">
+      <input class="form-control" id="pages" name="pages" [(ngModel)]="currentBook.pages">
     </div>
 
     <div class="form-group">
@@ -51,10 +51,11 @@
 
     <div class="form-group">
       <label for="country">Country</label>
-      <select class="form-control" id="country">
-        <option>Country #1</option>
+      <select class="form-control" id="country" name="country" (click)="test(currentBook.countryId)" [(ngModel)]="currentBook.countryId">
+        <option *ngFor="let country of dataLists.countries" [ngValue]="country.id" [selected]="country.id === currentBook.countryId">{{country.name}}</option>
+        <!-- <option>Country #1</option>
         <option>Country #2</option>
-        <option>Country #3</option>
+        <option>Country #3</option> -->
       </select>
     </div>
 
