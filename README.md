@@ -40,7 +40,7 @@ For retrieving data every request should be supplied with "x-auth-token: bad18eb
 # Assignment 3
 ```
 'Search' - page:
-1) Format options should be loaded from server.
+1) (done) Format options should be loaded from server.
 2) Form fields are filters and are optional, although they should still be validated where needed.
 3) List of filtered books should have the same look as the list on the 'Main' page.
 4) Form fields state changes should be immediately reflected in url GET parameters dynamically, e.g.:

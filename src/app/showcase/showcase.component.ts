@@ -13,7 +13,6 @@ export class ShowcaseComponent implements OnInit {
   constructor(private booksService: BooksService) { }
 
   ngOnInit() {
-    this.booksService.test1('test for service connection');
     this.booksService.getData('books').subscribe( answer => {
       this.books = answer.body;
     }, error => {

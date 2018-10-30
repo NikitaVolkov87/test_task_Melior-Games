@@ -13,13 +13,16 @@ import { SearchComponent } from './search/search.component';
 
 import { BooksService } from './_services/books.service';
 
+import { SearchFilterPipe } from './_pipes/search-filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     NavigationComponent,
     ShowcaseComponent,
-    SearchComponent
+    SearchComponent,
+    SearchFilterPipe
   ],
   imports: [
     AppRoutingModule,

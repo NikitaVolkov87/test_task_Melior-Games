@@ -27,7 +27,7 @@
     <div class="form-group">
       <label for="format">Format</label>
       <select class="form-control" id="format" name="format" (click)="booksService.log(currentBook.formatId)" [(ngModel)]="currentBook.formatId">
-        <option *ngFor="let format of dataLists.formats" [ngValue]="format.id" [selected]="format.id === currentBook.formatId">{{format.name}}</option>>
+        <option *ngFor="let format of dataLists.formats" [ngValue]="format.id" [selected]="format.id === currentBook.formatId">{{format.name}}</option>
         <!-- <option>Paperback</option>
         <option>Hardcover</option>
         <option>Audiobook</option>
