@@ -56,4 +56,11 @@ export class BookComponent implements OnInit {
     })
   }
 
+  onSubmit(formValid: boolean): void {
+    if (formValid) {
+      console.log('form submitted!', formValid);
+      console.log(this.currentBook);
+    }
+  }
+
 }

@@ -1,6 +1,6 @@
 <div class="form-wrapper">
 
-  <form #bookForm="ngForm">
+  <form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm.valid)">
 
     <h3 class="mb-4" (click)="booksService.log(currentBook)">Book Info</h3>
 
