@@ -44,34 +44,14 @@ export class SearchComponent implements OnInit {
         delete this.searchBook[item];
         continue;
       }
-      if ( item.slice(0, 5) === 'price' ) {
-        // console.log(this.searchBook[item]);
-        // console.log(item.slice(0, 5));
+      if ( item.slice(0, 5) === 'price' || item.slice(0, 5) === 'pages' ) {
         this.foundBooks = this.foundBooks.filter( item2 => {
-          console.log(item2[item.slice(0, 5)]);
-          // console.log(this.searchBook[item]);
-          console.log(this.searchBook['priceMin'], this.searchBook['priceMax']);
-          if ('priceMin' in this.searchBook && 'priceMax' in this.searchBook) {
-            return ( item2[item.slice(0, 5)] >= parseInt(this.searchBook['priceMin']) && item2[item.slice(0, 5)] <= parseInt(this.searchBook['priceMax']) );
-          } else if ('priceMin' in this.searchBook) {
-            return item2[item.slice(0, 5)] >= parseInt(this.searchBook['priceMin']);
+          if (item.slice(0, 5)+'Min' in this.searchBook && item.slice(0, 5)+'Max' in this.searchBook) {
+            return ( item2[item.slice(0, 5)] >= parseInt(this.searchBook[item.slice(0, 5)+'Min']) && item2[item.slice(0, 5)] <= parseInt(this.searchBook[item.slice(0, 5)+'Max']) );
+          } else if ( item.slice(0, 5)+'Min' in this.searchBook ) {
+            return item2[item.slice(0, 5)] >= parseInt(this.searchBook[item.slice(0, 5)+'Min']);
           } else {
-            return item2[item.slice(0, 5)] <= parseInt(this.searchBook['priceMax']);
-          }
-        });
-      } else if ( item.slice(0, 5) === 'pages' ) {
-        // console.log(this.searchBook[item]);
-        console.log(item.slice(0, 5));
-        this.foundBooks = this.foundBooks.filter( item2 => {
-          console.log(item2[item.slice(0, 5)]);
-          // console.log(this.searchBook[item]);
-          console.log(this.searchBook['pagesMin'], this.searchBook['pagesMax']);
-          if ('pagesMin' in this.searchBook && 'pagesMax' in this.searchBook) {
-            return ( item2[item.slice(0, 5)] >= parseInt(this.searchBook['pagesMin']) && item2[item.slice(0, 5)] <= parseInt(this.searchBook['pagesMax']) );
-          } else if ('pagesMin' in this.searchBook) {
-            return item2[item.slice(0, 5)] >= parseInt(this.searchBook['pagesMin']);
-          } else {
-            return item2[item.slice(0, 5)] <= parseInt(this.searchBook['pagesMax']);
+            return item2[item.slice(0, 5)] <= parseInt(this.searchBook[item.slice(0, 5)+'Max']);
           }
         });
       } else {
