@@ -19,14 +19,15 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private booksService: BooksService, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.handleUrl();
     this.booksService.getData('books').subscribe( answer => {
       this.books = answer.body;
-      this.books.forEach( item => item['show'] = false );
+      // this.books.forEach( item => item['show'] = false );
+      this.getUrlParams();
     }, error => {
       console.log(error);
     });
@@ -46,9 +47,11 @@ export class SearchComponent implements OnInit {
 
   filterBooks(): void {
     this.foundBooks = this.books;
+    this.setUrlParams();
     for (const item in this.searchBook) {
       if ( !this.searchBook[item] ) {
-        delete this.searchBook[item];
+        // delete this.searchBook[item];
+        this.searchBook[item] = null;
         continue;
       }
       if ( item.slice(0, 5) === 'price' || item.slice(0, 5) === 'pages' ) {
@@ -72,11 +75,29 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  handleUrl(): void {
-    /*this.href = this.router.url;
-    console.log(this.router.url);*/
-      // let author = params['author'];
-    console.log('url params ->', this.route.snapshot.queryParams);
+  getUrlParams(): void {
+    // console.log(this.route.snapshot.queryParams, Object.keys(this.route.snapshot.queryParams).length);
+    if (Object.keys(this.route.snapshot.queryParams).length !== 0) {
+      this.searchBook = this.route.snapshot.queryParams;
+      this.filterBooks();
+    }
   }
 
+  setUrlParams(): void {
+    console.log('runnin setUrlParams()...');
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: this.searchBook,
+      queryParamsHandling: 'merge',
+      // preserve the existing query params in the route
+      skipLocationChange: false
+      // do not trigger navigation
+    });
+    console.log(this.router, this.route);
+  }
+
+  testDelKey(): void {
+    delete this.route.snapshot.queryParams['author'];
+    console.log(this.route.snapshot.queryParams);
+  }
 }
