@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { BooksService } from '../_services/books.service';
 
@@ -14,9 +15,15 @@ export class SearchComponent implements OnInit {
   public searchBook: object = {};
   public dataLists: object = {};
 
-  constructor(private booksService: BooksService) { }
+  public href: string = "";
+
+  constructor(
+    private booksService: BooksService, 
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.handleUrl();
     this.booksService.getData('books').subscribe( answer => {
       this.books = answer.body;
       this.books.forEach( item => item['show'] = false );
@@ -63,6 +70,13 @@ export class SearchComponent implements OnInit {
     if ( Object.keys(this.searchBook).length === 0 ) {
       this.foundBooks = [];
     }
+  }
+
+  handleUrl(): void {
+    /*this.href = this.router.url;
+    console.log(this.router.url);*/
+      // let author = params['author'];
+    console.log('url params ->', this.route.snapshot.queryParams);
   }
 
 }
