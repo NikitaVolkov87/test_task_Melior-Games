@@ -9,6 +9,7 @@ import { BooksService } from '../_services/books.service';
 })
 export class SearchComponent implements OnInit {
   public books: object[];
+  public foundBooks: object[] = [];
 
   public searchBook: object = {};
   public dataLists: object = {};
@@ -36,35 +37,20 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  filterBooks(field: string, text: [string, number]): void {
-    /*const searchText = text;//.toString().toLowerCase();
-    console.log(field, searchText);
-    if ( !text ) {
-      this.books.forEach( item => item['show'] = false );
-    } else {
-      this.books.forEach( item => {
-        console.log(item[field].toString().indexOf(searchText));
-        if ( item[field].toString().indexOf(searchText) !== -1 ) {
-          item['show'] = true;
-        } else {
-          item['show'] = false;
-        }
-      });
-    }*/
-    if ( !text ) {
-      this.books.forEach( item => item['show'] = false );
-      delete this.searchBook[field];
-    } else {
-      this.books.forEach( item => {
-        for (const item2 in this.searchBook ) {
-          console.log(item[item2], this.searchBook[item2]);
-          if ( item[item2].indexOf(this.searchBook[item2]) !== -1 ) {
-            item['show'] = true;
-          } else {
-            // item['show'] = false;
-          }
-        }
+  filterBooks(): void {
+    this.foundBooks = this.books;
+    for (const item in this.searchBook) {
+      if ( !this.searchBook[item] ) {
+        delete this.searchBook[item];
+        continue;
+      }
+      this.foundBooks = this.foundBooks.filter( item2 => {
+        return item2[item].indexOf(this.searchBook[item]) !== -1 ;
       });
     }
+    if ( Object.keys(this.searchBook).length === 0 ) {
+      this.foundBooks = [];
+    }
   }
+
 }

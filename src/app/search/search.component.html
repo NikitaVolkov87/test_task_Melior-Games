@@ -11,7 +11,7 @@
 
           <label for="author" class="col-sm-3 col-form-label">Author</label>
           <div class="col-sm-7">
-            <input class="form-control" id="author" name="author" [(ngModel)]="searchBook.author" (ngModelChange)="filterBooks('author', searchBook.author)">
+            <input class="form-control" id="author" name="author" [(ngModel)]="searchBook.author" (ngModelChange)="filterBooks()">
           </div>
 
         </div>
@@ -20,7 +20,7 @@
 
           <label for="title" class="col-sm-3 col-form-label">Title</label>
           <div class="col-sm-7">
-            <input class="form-control" id="title" name="title" [(ngModel)]="searchBook.title" (ngModelChange)="filterBooks('title', searchBook.title)">
+            <input class="form-control" id="title" name="title" [(ngModel)]="searchBook.title" (ngModelChange)="filterBooks()">
           </div>
 
         </div>
@@ -29,7 +29,7 @@
 
           <label for="isbn" class="col-sm-3 col-form-label">ISBN</label>
           <div class="col-sm-7">
-            <input class="form-control" id="isbn" name="isbn" [(ngModel)]="searchBook.isbn" (ngModelChange)="filterBooks('isbn', searchBook.isbn)">
+            <input class="form-control" id="isbn" name="isbn" [(ngModel)]="searchBook.isbn" (ngModelChange)="filterBooks()">
           </div>
 
         </div>
@@ -106,10 +106,10 @@
     </div>
 
     <div class="col-xs-8">
-      <h3 class="mb-4" (click)="booksService.log(books)">List of Matched Books</h3>
+      <h3 class="mb-4" (click)="booksService.log(foundBooks)">List of Matched Books</h3>
 
-      <div class="container__books" *ngFor="let book of books">
-        <ng-container *ngIf="book.show">
+      <div class="container__books" *ngFor="let book of foundBooks">
+        <ng-container>
           <a href="" routerLink="/book/{{book.id}}"><p><span>{{book.author}}</span> - <span>{{book.title}}</span></p></a>
         </ng-container>
       </div>
