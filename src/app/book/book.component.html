@@ -6,7 +6,7 @@
 
     <div class="form-group">
       <label for="author">Author</label>
-      <input class="form-control" id="author" name="author" [(ngModel)]="currentBook.author" required minlength="2" #author="ngModel" pattern="[^' ']*">
+      <input class="form-control" id="author" name="author" [(ngModel)]="currentBook.author" required minlength="2" #author="ngModel" pattern="[^0-9]*">
 
       <div *ngIf="author.invalid && (author.dirty || author.touched)" class="alert alert-danger">
         <div *ngIf="author.errors.required">
@@ -16,7 +16,7 @@
           Author must be at least 2 characters long.
         </div>
         <div *ngIf="author.errors.pattern">
-          Spaces are not allowed.
+          Digits are not allowed.
         </div>
       </div>
 
@@ -84,12 +84,32 @@
 
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea class="form-control" id="description" rows="3" name="description" [(ngModel)]="currentBook.description"></textarea>
+      <textarea class="form-control" id="description" rows="3" name="description" [(ngModel)]="currentBook.description" required minlength="10" #description="ngModel"></textarea>
+
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+        <div *ngIf="description.errors.required">
+          Description is required.
+        </div>
+        <div *ngIf="description.errors.minlength">
+          Description must be at least 10 characters long.
+        </div>
+      </div>
+
     </div>
 
     <div class="form-group">
       <label for="price">Price</label>
-      <input class="form-control" id="price" name="price" [(ngModel)]="currentBook.price">
+      <input class="form-control" id="price" name="price" [(ngModel)]="currentBook.price" required #price="ngModel" pattern="[0-9]*">
+
+      <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+        <div *ngIf="price.errors.required">
+          Price is required.
+        </div>
+        <div *ngIf="price.errors.pattern">
+          Only digits are allowed.
+        </div>
+      </div>
+
     </div>
 
     <hr class="m-1 mb-5 mt-5">
@@ -98,7 +118,7 @@
 
     <div class="form-group">
       <label for="country">Country</label>
-      <select class="form-control" id="country" name="country" (click)="booksService.log(currentBook.countryId)" [(ngModel)]="currentBook.countryId">
+      <select class="form-control" id="country" name="country" (click)="booksService.log(currentBook.countryId)" [(ngModel)]="currentBook.countryId" required>
         <option *ngFor="let country of dataLists.countries" [ngValue]="country.id" [selected]="country.id === currentBook.countryId">{{country.name}}</option>
         <!-- <option>Country #1</option>
         <option>Country #2</option>
@@ -108,7 +128,7 @@
 
     <div class="form-group">
       <label for="city">City</label>
-      <select class="form-control" id="city" name="city" (click)="booksService.log(currentBook.cityId)" [(ngModel)]="currentBook.cityId">
+      <select class="form-control" id="city" name="city" (click)="booksService.log(currentBook.cityId)" [(ngModel)]="currentBook.cityId" required>
         <ng-container *ngFor="let city of dataLists.cities">
           <option *ngIf="!(currentBook.countryId) || (city.countryId === currentBook.countryId)" [ngValue]="city.id" [selected]="city.id === currentBook.cityId">{{city.name}}</option>
         </ng-container>
@@ -120,7 +140,7 @@
 
     <div class="form-group">
       <label for="company">Company</label>
-      <select class="form-control" id="company" name="company" (click)="booksService.log(currentBook.companyId)" [(ngModel)]="currentBook.companyId">
+      <select class="form-control" id="company" name="company" (click)="booksService.log(currentBook.companyId)" [(ngModel)]="currentBook.companyId" required>
         <ng-container *ngFor="let company of dataLists.companies">
           <option *ngIf="!(currentBook.cityId) || (company.cityId === currentBook.cityId)" [ngValue]="company.id" [selected]="company.id === currentBook.companyId">{{company.name}}</option>
         </ng-container>

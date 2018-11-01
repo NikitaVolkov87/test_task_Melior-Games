@@ -31,8 +31,8 @@ For retrieving data every request should be supplied with "x-auth-token: bad18eb
 # Assignment 2
 ```
 'Add New Book' - page:
-1) (need to paste) Add form validation and display errors under invalid fields.
-2) (need to paste) All fields are required.
+1) (done) Add form validation and display errors under invalid fields.
+2) (done) All fields are required.
 3) (done) Format, Country, City, Company options should be loaded from server.
 4) Save form data to server.
 ```
@@ -41,7 +41,7 @@ For retrieving data every request should be supplied with "x-auth-token: bad18eb
 ```
 'Search' - page:
 1) (done) Format options should be loaded from server.
-2) Form fields are filters and are optional, although they should still be validated where needed.
+2) (done) Form fields are filters and are optional, although they should still be validated where needed.
 3) List of filtered books should have the same look as the list on the 'Main' page.
 4) (done) Form fields state changes should be immediately reflected in url GET parameters dynamically, e.g.:
   Form content:
@@ -52,5 +52,3 @@ For retrieving data every request should be supplied with "x-auth-token: bad18eb
   
   It should be possible to copy retrieved url, enter in a new browser tab and get the same form state.
 ```
-
-

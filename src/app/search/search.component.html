@@ -11,7 +11,14 @@
 
           <label for="author" class="col-sm-3 col-form-label">Author</label>
           <div class="col-sm-7">
-            <input class="form-control" id="author" name="author" [(ngModel)]="searchBook.author" (ngModelChange)="filterBooks()">
+            <input class="form-control" id="author" name="author" [(ngModel)]="searchBook.author" (ngModelChange)="filterBooks()" #author="ngModel" pattern="[^0-9]*">
+
+            <div *ngIf="author.invalid && (author.dirty || author.touched)" class="alert alert-danger">
+              <div *ngIf="author.errors.pattern">
+                Digits are not allowed.
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -29,7 +36,14 @@
 
           <label for="isbn" class="col-sm-3 col-form-label">ISBN</label>
           <div class="col-sm-7">
-            <input class="form-control" id="isbn" name="isbn" [(ngModel)]="searchBook.isbn" (ngModelChange)="filterBooks()">
+            <input class="form-control" id="isbn" name="isbn" [(ngModel)]="searchBook.isbn" (ngModelChange)="filterBooks()" #isbn="ngModel" pattern="[0-9]*">
+
+            <div *ngIf="isbn.invalid && (isbn.dirty || isbn.touched)" class="alert alert-danger">
+              <div *ngIf="isbn.errors.pattern">
+                Only digits are allowed.
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -57,7 +71,14 @@
 
               <label for="page-min" class="col-sm-6 col-form-label">Pages between</label>
               <div class="col-sm-6">
-                <input class="form-control" id="page-min" name="pages-min" [(ngModel)]="searchBook.pagesMin" (ngModelChange)="filterBooks()">
+                <input class="form-control" id="page-min" name="pages-min" [(ngModel)]="searchBook.pagesMin" (ngModelChange)="filterBooks()" #pagesMin="ngModel" pattern="[0-9]*">
+
+                <div *ngIf="pagesMin.invalid && (pagesMin.dirty || pagesMin.touched)" class="alert alert-danger">
+                  <div *ngIf="pagesMin.errors.pattern">
+                    Only digits are allowed.
+                  </div>
+                </div>
+
               </div>
 
             </div>
@@ -68,7 +89,14 @@
 
               <label  class="col-sm-2 col-form-label text-center" for="page-max">and</label>
               <div class="col-sm-6">
-                <input class="form-control" id="page-max" name="pages-max" [(ngModel)]="searchBook.pagesMax" (ngModelChange)="filterBooks()">
+                <input class="form-control" id="page-max" name="pages-max" [(ngModel)]="searchBook.pagesMax" (ngModelChange)="filterBooks()" #pagesMax="ngModel" pattern="[0-9]*">
+
+                <div *ngIf="pagesMax.invalid && (pagesMax.dirty || pagesMax.touched)" class="alert alert-danger">
+                  <div *ngIf="pagesMax.errors.pattern">
+                    Only digits are allowed.
+                  </div>
+                </div>
+
               </div>
 
             </div>
@@ -83,7 +111,14 @@
 
               <label for="price-min" class="col-sm-6 col-form-label">Price between</label>
               <div class="col-sm-6">
-                <input class="form-control" id="price-min" name="price-min" [(ngModel)]="searchBook.priceMin" (ngModelChange)="filterBooks()">
+                <input class="form-control" id="price-min" name="price-min" [(ngModel)]="searchBook.priceMin" (ngModelChange)="filterBooks()" #priceMin="ngModel" pattern="[0-9]*">
+
+                <div *ngIf="priceMin.invalid && (priceMin.dirty || priceMin.touched)" class="alert alert-danger">
+                  <div *ngIf="priceMin.errors.pattern">
+                    Only digits are allowed.
+                  </div>
+                </div>
+
               </div>
 
             </div>
@@ -94,7 +129,14 @@
 
               <label  class="col-sm-2 col-form-label text-center" for="price-max">and</label>
               <div class="col-sm-6">
-                <input class="form-control" id="price-max" name="price-max" [(ngModel)]="searchBook.priceMax" (ngModelChange)="filterBooks()">
+                <input class="form-control" id="price-max" name="price-max" [(ngModel)]="searchBook.priceMax" (ngModelChange)="filterBooks()" #priceMax="ngModel" pattern="[0-9]*">
+
+                <div *ngIf="priceMax.invalid && (priceMax.dirty || priceMax.touched)" class="alert alert-danger">
+                  <div *ngIf="priceMax.errors.pattern">
+                    Only digits are allowed.
+                  </div>
+                </div>
+
               </div>
 
             </div>
