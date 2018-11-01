@@ -34,7 +34,7 @@ For retrieving data every request should be supplied with "x-auth-token: bad18eb
 1) (done) Add form validation and display errors under invalid fields.
 2) (done) All fields are required.
 3) (done) Format, Country, City, Company options should be loaded from server.
-4) Save form data to server.
+4) (done) Save form data to server.
 ```
  
 # Assignment 3

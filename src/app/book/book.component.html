@@ -6,7 +6,7 @@
 
     <div class="form-group">
       <label for="author">Author</label>
-      <input class="form-control" id="author" name="author" [(ngModel)]="currentBook.author" required minlength="2" #author="ngModel" pattern="[^0-9]*">
+      <input class="form-control" id="author" name="author" [(ngModel)]="currentBook.author" required minlength="2" #author="ngModel" pattern="[^0-9]*" [disabled]="currentBookId">
 
       <div *ngIf="author.invalid && (author.dirty || author.touched)" class="alert alert-danger">
         <div *ngIf="author.errors.required">
@@ -24,7 +24,7 @@
 
     <div class="form-group">
       <label for="title">Title</label>
-      <input class="form-control" id="title" name="title" [(ngModel)]="currentBook.title" required minlength="2" #title="ngModel">
+      <input class="form-control" id="title" name="title" [(ngModel)]="currentBook.title" required minlength="2" #title="ngModel" [disabled]="currentBookId">
 
       <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
         <div *ngIf="title.errors.required">
@@ -39,7 +39,7 @@
 
     <div class="form-group">
       <label for="isbn">ISBN</label>
-      <input class="form-control" id="isbn" name="isbn" [(ngModel)]="currentBook.isbn" required minlength="10" #isbn="ngModel" pattern="[0-9]*">
+      <input class="form-control" id="isbn" name="isbn" [(ngModel)]="currentBook.isbn" required minlength="10" #isbn="ngModel" pattern="[0-9]*" [disabled]="currentBookId">
 
       <div *ngIf="isbn.invalid && (isbn.dirty || isbn.touched)" class="alert alert-danger">
         <div *ngIf="isbn.errors.required">
@@ -57,7 +57,7 @@
 
     <div class="form-group">
       <label for="pages">Number of Pages</label>
-      <input class="form-control" id="pages" name="pages" [(ngModel)]="currentBook.pages" required #pages="ngModel" pattern="[0-9]*">
+      <input class="form-control" id="pages" name="pages" [(ngModel)]="currentBook.pages" required #pages="ngModel" pattern="[0-9]*" [disabled]="currentBookId">
 
       <div *ngIf="pages.invalid && (pages.dirty || pages.touched)" class="alert alert-danger">
         <div *ngIf="pages.errors.required">
@@ -72,7 +72,7 @@
 
     <div class="form-group">
       <label for="format">Format</label>
-      <select class="form-control" id="format" name="format" (click)="booksService.log(currentBook.formatId)" [(ngModel)]="currentBook.formatId">
+      <select class="form-control" id="format" name="format" (click)="booksService.log(currentBook.formatId)" [(ngModel)]="currentBook.formatId" [disabled]="currentBookId">
         <option *ngFor="let format of dataLists.formats" [ngValue]="format.id" [selected]="format.id === currentBook.formatId">{{format.name}}</option>
         <!-- <option>Paperback</option>
         <option>Hardcover</option>
@@ -84,7 +84,7 @@
 
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea class="form-control" id="description" rows="3" name="description" [(ngModel)]="currentBook.description" required minlength="10" #description="ngModel"></textarea>
+      <textarea class="form-control" id="description" rows="3" name="description" [(ngModel)]="currentBook.description" required minlength="10" #description="ngModel" [disabled]="currentBookId"></textarea>
 
       <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
         <div *ngIf="description.errors.required">
@@ -99,7 +99,7 @@
 
     <div class="form-group">
       <label for="price">Price</label>
-      <input class="form-control" id="price" name="price" [(ngModel)]="currentBook.price" required #price="ngModel" pattern="[0-9]*">
+      <input class="form-control" id="price" name="price" [(ngModel)]="currentBook.price" required #price="ngModel" pattern="[0-9]*" [disabled]="currentBookId">
 
       <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
         <div *ngIf="price.errors.required">
@@ -118,7 +118,7 @@
 
     <div class="form-group">
       <label for="country">Country</label>
-      <select class="form-control" id="country" name="country" (click)="booksService.log(currentBook.countryId)" [(ngModel)]="currentBook.countryId" required>
+      <select class="form-control" id="country" name="country" (click)="booksService.log(currentBook.countryId)" [(ngModel)]="currentBook.countryId" required [disabled]="currentBookId">
         <option *ngFor="let country of dataLists.countries" [ngValue]="country.id" [selected]="country.id === currentBook.countryId">{{country.name}}</option>
         <!-- <option>Country #1</option>
         <option>Country #2</option>
@@ -128,7 +128,7 @@
 
     <div class="form-group">
       <label for="city">City</label>
-      <select class="form-control" id="city" name="city" (click)="booksService.log(currentBook.cityId)" [(ngModel)]="currentBook.cityId" required>
+      <select class="form-control" id="city" name="city" (click)="booksService.log(currentBook.cityId)" [(ngModel)]="currentBook.cityId" required [disabled]="currentBookId">
         <ng-container *ngFor="let city of dataLists.cities">
           <option *ngIf="!(currentBook.countryId) || (city.countryId === currentBook.countryId)" [ngValue]="city.id" [selected]="city.id === currentBook.cityId">{{city.name}}</option>
         </ng-container>
@@ -140,7 +140,7 @@
 
     <div class="form-group">
       <label for="company">Company</label>
-      <select class="form-control" id="company" name="company" (click)="booksService.log(currentBook.companyId)" [(ngModel)]="currentBook.companyId" required>
+      <select class="form-control" id="company" name="company" (click)="booksService.log(currentBook.companyId)" [(ngModel)]="currentBook.companyId" required [disabled]="currentBookId">
         <ng-container *ngFor="let company of dataLists.companies">
           <option *ngIf="!(currentBook.cityId) || (company.cityId === currentBook.cityId)" [ngValue]="company.id" [selected]="company.id === currentBook.companyId">{{company.name}}</option>
         </ng-container>
@@ -150,7 +150,7 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-4" [disabled]="bookForm.invalid">Submit</button>
+    <button type="submit" class="btn btn-primary mt-4" [disabled]="bookForm.invalid" *ngIf="!currentBookId">Submit</button>
 
   </form>
 

@@ -24,7 +24,7 @@
       "companyId": 25,
       "formatId": 2,
       "description": "Twice amended to bring it to documentary decorum and the kind of textual completion Proust himself could never achieve.",
-      "price": 321.00
+      "price": 321
     },
     {
       "id": 3,
@@ -50,7 +50,46 @@
       "companyId": 14,
       "formatId": 4,
       "description": " The hardback is stitched and bound to keep, so it is worth your money.",
-      "price": 777.00
+      "price": 777
+    },
+    {
+      "author": "Nikita",
+      "title": "An Example of a Google Bar Chart",
+      "isbn": "23232323232323",
+      "pages": "122",
+      "formatId": 3,
+      "description": "ssaasasasas",
+      "price": "100",
+      "countryId": 2,
+      "cityId": 7,
+      "companyId": 81,
+      "id": 5
+    },
+    {
+      "author": "Nikita Volkov",
+      "title": "ddsd",
+      "isbn": "23232323232323",
+      "pages": "122",
+      "formatId": 2,
+      "description": "dsdsdasdsadasdasd",
+      "price": "100",
+      "countryId": 1,
+      "cityId": 2,
+      "companyId": 55,
+      "id": 6
+    },
+    {
+      "author": "Nikitasdasdasdasdadsda",
+      "title": "Angular test book",
+      "isbn": "23232323232323",
+      "pages": "122",
+      "formatId": 2,
+      "description": "dsadsadadsdasd",
+      "price": "100",
+      "countryId": 2,
+      "cityId": 8,
+      "companyId": 29,
+      "id": 7
     }
   ],
   "formats": [

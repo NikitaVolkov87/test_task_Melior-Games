@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { BooksService } from '../_services/books.service';
 
@@ -21,21 +21,22 @@ export class BookComponent implements OnInit {
   public dataLists: object = {};
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
+    private router: Router,
     private booksService: BooksService
   ) { }
 
   ngOnInit() {
     this.currentBookId = this.route.snapshot.paramMap.get('id');
     this.prepareDataLists();
-    if (this.currentBookId) {
-      this.booksService.getData('books').subscribe( answer => {
-        this.books = answer.body;
+    this.booksService.getData('books').subscribe( answer => {
+      this.books = answer.body;
+      if (this.currentBookId) {
         this.showBookInfo();
-      }, error => {
-        console.log(error);
-      });
-    }
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 
   showBookInfo(): void {
@@ -58,8 +59,13 @@ export class BookComponent implements OnInit {
 
   onSubmit(formValid: boolean): void {
     if (formValid) {
-      console.log('form submitted!', formValid);
-      console.log(this.currentBook);
+      const bookId: number = this.books.length + 1;
+      this.booksService.sendData(this.currentBook, bookId).subscribe( answer => {
+        console.log(answer);
+        this.router.navigate(['/showcase']);
+      }, error => {
+        console.log(error);
+      });
     }
   }
 
