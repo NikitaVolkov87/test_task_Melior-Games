@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   public searchBook: object = {};
   public dataLists: object = {};
 
-  public href: string = "";
+  private paramsSubscription: any;
 
   constructor(
     private booksService: BooksService, 
@@ -50,8 +50,8 @@ export class SearchComponent implements OnInit {
     this.setUrlParams();
     for (const item in this.searchBook) {
       if ( !this.searchBook[item] ) {
-        // delete this.searchBook[item];
-        this.searchBook[item] = null;
+        delete this.searchBook[item];
+        // this.searchBook[item] = null;
         continue;
       }
       if ( item.slice(0, 5) === 'price' || item.slice(0, 5) === 'pages' ) {
@@ -76,28 +76,26 @@ export class SearchComponent implements OnInit {
   }
 
   getUrlParams(): void {
-    // console.log(this.route.snapshot.queryParams, Object.keys(this.route.snapshot.queryParams).length);
     if (Object.keys(this.route.snapshot.queryParams).length !== 0) {
-      this.searchBook = this.route.snapshot.queryParams;
+      this.paramsSubscription = this.route.snapshot.queryParams;
+      for (const item in this.paramsSubscription) {
+        if (item === 'formatId') {
+          this.searchBook[item] = parseInt(this.paramsSubscription[item]);
+        } else {
+          this.searchBook[item] = this.paramsSubscription[item];
+        }
+      }
       this.filterBooks();
     }
   }
 
   setUrlParams(): void {
-    console.log('runnin setUrlParams()...');
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: this.searchBook,
       queryParamsHandling: 'merge',
-      // preserve the existing query params in the route
       skipLocationChange: false
-      // do not trigger navigation
     });
-    console.log(this.router, this.route);
   }
 
-  testDelKey(): void {
-    delete this.route.snapshot.queryParams['author'];
-    console.log(this.route.snapshot.queryParams);
-  }
 }
