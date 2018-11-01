@@ -150,10 +150,31 @@
     <div class="col-xs-8">
       <h3 class="mb-4" (click)="booksService.log(foundBooks)">List of Matched Books</h3>
 
-      <div class="container__books" *ngFor="let book of foundBooks">
-        <ng-container>
-          <a href="" routerLink="/book/{{book.id}}"><p><span>{{book.author}}</span> - <span>{{book.title}}</span></p></a>
-        </ng-container>
+      <div class="books__container" *ngIf="books">
+        <div class="books__row books__row_table_header">
+          <div class="books__col books__col_table_header_n">
+            <p class="table_header_text">#</p>
+          </div>
+          <div class="books__col books__col_table_header_info">
+            <p class="table_header_text">book</p>
+          </div>
+          <div class="books__col books__col_table_header_price">
+            <p class="table_header_text">price</p>
+          </div>
+        </div>
+        <div class="books__row books__row_table_item" *ngFor="let book of books">
+          <a href="" routerLink="/book/{{book.id}}">
+            <div class="books__col books__col_table_item_n">
+              <p class="table_item_text">{{book.id}}</p>
+            </div>
+            <div class="books__col books__col_table_item_info">
+              <p class="table_item_text"><span class="books_author_text">{{book.author}}</span> - <span class="books_title_text">{{book.title}}</span> <span class="books_pages_text">({{book.pages}} pages)</span></p>
+            </div>
+            <div class="books__col books__col_table_item_price">
+              <p class="table_item_text">{{book.price}}</p>
+            </div>
+          </a>
+        </div>
       </div>
 
     </div>

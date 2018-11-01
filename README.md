@@ -21,29 +21,28 @@ For retrieving data every request should be supplied with "x-auth-token: bad18eb
 ```
 
 # Assignment 1
-
 ```
 'Main' - page:
-1) (done) Output list of available books on main page.
-2) (done) List items should contain links to separate page (similar to 'Add New Book') and pre-populate the form.
+1) Output list of available books on main page.
+2) List items should contain links to separate page (similar to 'Add New Book') and pre-populate the form.
 ```
 
 # Assignment 2
 ```
 'Add New Book' - page:
-1) (done) Add form validation and display errors under invalid fields.
-2) (done) All fields are required.
-3) (done) Format, Country, City, Company options should be loaded from server.
-4) (done) Save form data to server.
+1) Add form validation and display errors under invalid fields.
+2) All fields are required.
+3) Format, Country, City, Company options should be loaded from server.
+4) Save form data to server.
 ```
  
 # Assignment 3
 ```
 'Search' - page:
-1) (done) Format options should be loaded from server.
-2) (done) Form fields are filters and are optional, although they should still be validated where needed.
+1) Format options should be loaded from server.
+2) Form fields are filters and are optional, although they should still be validated where needed.
 3) List of filtered books should have the same look as the list on the 'Main' page.
-4) (done) Form fields state changes should be immediately reflected in url GET parameters dynamically, e.g.:
+4) Form fields state changes should be immediately reflected in url GET parameters dynamically, e.g.:
   Form content:
     Author: Miguel De Cervantes
     Format: Paperback

@@ -18,30 +18,6 @@ export class ShowcaseComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-
-    this.booksService.getData('formats').subscribe( answer => {
-      console.log(answer);
-    }, error => {
-      console.log(error);
-    });
-
-    this.booksService.getData('countries').subscribe( answer => {
-      console.log(answer);
-    }, error => {
-      console.log(error);
-    });
-
-    this.booksService.getData('cities').subscribe( answer => {
-      console.log(answer);
-    }, error => {
-      console.log(error);
-    });
-
-    this.booksService.getData('companies').subscribe( answer => {
-      console.log(answer);
-    }, error => {
-      console.log(error);
-    });
   }
 
 }

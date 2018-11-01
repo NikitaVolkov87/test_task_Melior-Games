@@ -8,3 +8,79 @@
   padding: 30px;
   width: 100%;
 }
+
+
+.books__row,
+.books__row>a {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.books__row>a {
+  text-decoration: none;
+  opacity: .8;
+  transition: .5s opacity;
+}
+.books__row>a:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.books__col {
+  text-align: center;
+  border-radius: 5px;
+  background-color: #dcdcdc;
+  line-height: 40px;
+  margin: 2px 5px;
+}
+
+.books__row_table_header .books__col {
+  margin: 10px 5px;
+  background-color: #ccc;
+}
+
+.books__col:first-of-type {
+  width: 50px;
+}
+
+.books__col:nth-of-type(2) {
+  width: 100%;
+  text-align: left;
+  padding-left: 18px;
+}
+
+.books__col:last-of-type {
+  width: 80px;
+}
+
+.table_header_text,
+.table_item_text {
+  margin-bottom: 0;
+}
+
+.table_header_text {
+  color: #666;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.books_author_text {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.books_title_text {
+  font-size: 1.2rem;
+}
+
+.books_pages_text {
+  font-size: 0.8rem;
+  font-weight: lighter;
+  margin-left: 10px;
+}
+
+app-search .books__col {
+  line-height: 30px;
+}
