@@ -3,16 +3,17 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { BooksService } from '../_services/books.service';
 
+import { Books } from '../_interfaces/interfaces';
+
 @Component({
   selector: 'app-search',
   providers: [BooksService],
   templateUrl: './search.component.html'
 })
 export class SearchComponent implements OnInit {
-  public books: object[];
-  
-  public foundBooks: object[] = [];
-  public searchBook: object = {};
+  public books: Books[];
+  public foundBooks: Books[] = [];
+  public searchBook: Books = <Books>{};
   public dataLists: object = {};
 
   private paramsSubscription: any;
@@ -26,7 +27,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.booksService.getData('books').subscribe( answer => {
       this.books = answer.body;
-      // this.books.forEach( item => item['show'] = false );
       this.getUrlParams();
     }, error => {
       console.log(error);
@@ -51,7 +51,6 @@ export class SearchComponent implements OnInit {
     for (const item in this.searchBook) {
       if ( !this.searchBook[item] ) {
         delete this.searchBook[item];
-        // this.searchBook[item] = null;
         continue;
       }
       if ( item.slice(0, 5) === 'price' || item.slice(0, 5) === 'pages' ) {

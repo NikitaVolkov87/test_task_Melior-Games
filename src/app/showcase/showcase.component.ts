@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BooksService } from '../_services/books.service';
+import { Books } from '../_interfaces/interfaces';
 
 @Component({
   selector: 'app-showcase',
@@ -8,7 +9,7 @@ import { BooksService } from '../_services/books.service';
   templateUrl: './showcase.component.html'
 })
 export class ShowcaseComponent implements OnInit {
-  public books: object[];
+  public books: Books[];
 
   constructor(private booksService: BooksService) { }
 

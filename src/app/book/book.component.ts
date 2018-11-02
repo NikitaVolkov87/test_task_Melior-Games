@@ -3,21 +3,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { BooksService } from '../_services/books.service';
 
+import { Books } from '../_interfaces/interfaces';
+
 @Component({
   selector: 'app-book',
   providers: [BooksService],
   templateUrl: './book.component.html'
 })
 export class BookComponent implements OnInit {
-  public books: object[];
+  public books: Books[];
   public currentBookId: string;
-  public currentBook: object = {};
-
-  /*public selectedFormat: object;
-  public selectedCountry: object;
-  public selectedCity: object;
-  public selectedCompany: object;*/
-
+  public currentBook: Books = <Books>{};
   public dataLists: object = {};
 
   constructor(
@@ -41,9 +37,8 @@ export class BookComponent implements OnInit {
 
   showBookInfo(): void {
     this.currentBook = this.books.filter(item => {
-      return item['id'] == this.currentBookId;
+      return item['id'] === parseInt(this.currentBookId);
     })[0];
-    console.log('currentBook -> ', this.currentBook);
   }
 
   prepareDataLists(): void {
@@ -61,7 +56,6 @@ export class BookComponent implements OnInit {
     if (formValid) {
       const bookId: number = this.books.length + 1;
       this.booksService.sendData(this.currentBook, bookId).subscribe( answer => {
-        console.log(answer);
         this.router.navigate(['/showcase']);
       }, error => {
         console.log(error);

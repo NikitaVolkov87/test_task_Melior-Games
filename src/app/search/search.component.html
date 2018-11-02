@@ -5,7 +5,7 @@
     <div class="col-xs-4">
       <form>
 
-        <h3 class="mb-4" (click)="booksService.log(searchBook)">Search</h3>
+        <h3 class="mb-4">Search</h3>
 
         <div class="form-group row">
 
@@ -148,9 +148,9 @@
     </div>
 
     <div class="col-xs-8">
-      <h3 class="mb-4" (click)="booksService.log(foundBooks)">List of Matched Books</h3>
+      <h3 class="mb-4">List of Matched Books</h3>
 
-      <div class="books__container" *ngIf="books">
+      <div class="books__container" *ngIf="foundBooks.length">
         <div class="books__row books__row_table_header">
           <div class="books__col books__col_table_header_n">
             <p class="table_header_text">#</p>
@@ -162,7 +162,7 @@
             <p class="table_header_text">price</p>
           </div>
         </div>
-        <div class="books__row books__row_table_item" *ngFor="let book of books">
+        <div class="books__row books__row_table_item" *ngFor="let book of foundBooks">
           <a href="" routerLink="/book/{{book.id}}">
             <div class="books__col books__col_table_item_n">
               <p class="table_item_text">{{book.id}}</p>

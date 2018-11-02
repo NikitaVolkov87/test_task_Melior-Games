@@ -2,7 +2,7 @@
 
   <form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm.valid)">
 
-    <h3 class="mb-4" (click)="booksService.log(currentBook)">Book Info</h3>
+    <h3 class="mb-4">Book Info</h3>
 
     <div class="form-group">
       <label for="author">Author</label>
@@ -72,7 +72,7 @@
 
     <div class="form-group">
       <label for="format">Format</label>
-      <select class="form-control" id="format" name="format" (click)="booksService.log(currentBook.formatId)" [(ngModel)]="currentBook.formatId" [disabled]="currentBookId">
+      <select class="form-control" id="format" name="format" [(ngModel)]="currentBook.formatId" [disabled]="currentBookId">
         <option *ngFor="let format of dataLists.formats" [ngValue]="format.id" [selected]="format.id === currentBook.formatId">{{format.name}}</option>
         <!-- <option>Paperback</option>
         <option>Hardcover</option>
@@ -118,7 +118,7 @@
 
     <div class="form-group">
       <label for="country">Country</label>
-      <select class="form-control" id="country" name="country" (click)="booksService.log(currentBook.countryId)" [(ngModel)]="currentBook.countryId" required [disabled]="currentBookId">
+      <select class="form-control" id="country" name="country" [(ngModel)]="currentBook.countryId" required [disabled]="currentBookId">
         <option *ngFor="let country of dataLists.countries" [ngValue]="country.id" [selected]="country.id === currentBook.countryId">{{country.name}}</option>
         <!-- <option>Country #1</option>
         <option>Country #2</option>
@@ -128,7 +128,7 @@
 
     <div class="form-group">
       <label for="city">City</label>
-      <select class="form-control" id="city" name="city" (click)="booksService.log(currentBook.cityId)" [(ngModel)]="currentBook.cityId" required [disabled]="currentBookId">
+      <select class="form-control" id="city" name="city" [(ngModel)]="currentBook.cityId" required [disabled]="currentBookId">
         <ng-container *ngFor="let city of dataLists.cities">
           <option *ngIf="!(currentBook.countryId) || (city.countryId === currentBook.countryId)" [ngValue]="city.id" [selected]="city.id === currentBook.cityId">{{city.name}}</option>
         </ng-container>
@@ -140,7 +140,7 @@
 
     <div class="form-group">
       <label for="company">Company</label>
-      <select class="form-control" id="company" name="company" (click)="booksService.log(currentBook.companyId)" [(ngModel)]="currentBook.companyId" required [disabled]="currentBookId">
+      <select class="form-control" id="company" name="company" [(ngModel)]="currentBook.companyId" required [disabled]="currentBookId">
         <ng-container *ngFor="let company of dataLists.companies">
           <option *ngIf="!(currentBook.cityId) || (company.cityId === currentBook.cityId)" [ngValue]="company.id" [selected]="company.id === currentBook.companyId">{{company.name}}</option>
         </ng-container>
