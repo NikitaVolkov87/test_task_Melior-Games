@@ -162,10 +162,10 @@
             <p class="table_header_text">price</p>
           </div>
         </div>
-        <div class="books__row books__row_table_item" *ngFor="let book of foundBooks">
+        <div class="books__row books__row_table_item" *ngFor="let book of foundBooks; let i = index">
           <a href="" routerLink="/book/{{book.id}}">
             <div class="books__col books__col_table_item_n">
-              <p class="table_item_text">{{book.id}}</p>
+              <p class="table_item_text">{{i + 1}}</p>
             </div>
             <div class="books__col books__col_table_item_info">
               <p class="table_item_text"><span class="books_author_text">{{book.author}}</span> - <span class="books_title_text">{{book.title}}</span> <span class="books_pages_text">({{book.pages}} pages)</span></p>

@@ -51,19 +51,6 @@
       "formatId": 4,
       "description": " The hardback is stitched and bound to keep, so it is worth your money.",
       "price": 777
-    },
-    {
-      "author": "Nikita Volkov",
-      "title": "Angular test book",
-      "isbn": "23232323232323",
-      "pages": "323",
-      "formatId": 3,
-      "description": "hulihlihjlknjkl",
-      "price": "99",
-      "countryId": 1,
-      "cityId": 3,
-      "companyId": 184,
-      "id": 5
     }
   ],
   "formats": [

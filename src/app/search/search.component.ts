@@ -65,7 +65,7 @@ export class SearchComponent implements OnInit {
         });
       } else {
         this.foundBooks = this.foundBooks.filter( item2 => {
-          return item2[item].toString().indexOf(this.searchBook[item]) !== -1 ;
+          return item2[item].toString().toLowerCase().indexOf(this.searchBook[item].toLowerCase()) !== -1 ;
         });
       }
     }
